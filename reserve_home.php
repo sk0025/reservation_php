@@ -19,28 +19,31 @@
         $login_data = array(
             'email' => $email
         );
-        $send_url = 'http://sample.homestead.test/receive.php';
+        $send_url = 'http://localhost:8090/show_events_info';
         // receive.phpにJSON形式でデータを投げる
         $json = json_encode($login_data, JSON_PRETTY_PRINT);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, '/events');
+        curl_setopt($ch, CURLOPT_URL, $send_url);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         $result = curl_exec($ch);
         $events = json_decode($result, true);
-        $events = Array(
-            "0" => Array(
-                "id" => 0,
-                "event_name" => "ライブ"
-            ),
-            "1" => Array(
-                "id" => 1,
-                "event_name" => "なんか"
-            )
-            );
+        $events = $events['events'];
+        // $events = Array(
+        //     "0" => Array(
+        //         "id" => 0,
+        //         "event_name" => "ライブ"
+        //     ),
+        //     "1" => Array(
+        //         "id" => 1,
+        //         "event_name" => "なんか"
+        //     )
+        //     );
         $count = count($events);
    
         for($i = 0 ; $i < $count ; $i ++){
