@@ -35,7 +35,6 @@ session_start();
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     $result = curl_exec($ch);
     $result = json_decode($result, true);
-    $status_code = $result['email'];
     $httpcode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
 
     if($httpcode == 200){
