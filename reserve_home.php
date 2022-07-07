@@ -15,7 +15,7 @@
     ログインしてください<br>
     <a href="reserve_login.php" class="btn">戻る</a>
     <?php else : 
-        $_SESSION["email"] = $email;
+        $email = $_SESSION["email"];
         $login_data = array(
             'email' => $email
         );
