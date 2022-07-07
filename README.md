@@ -1,5 +1,5 @@
 # reservation_php
-予約サイトのphpレポジトリ
+予約サイトのphpレポジトリ\n
 reserve_delete.php
 →自分の予約の削除
 reserve_detail.php
