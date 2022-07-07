@@ -21,25 +21,30 @@
         $remain_id = $_POST['remain_id'];
     }
     $reserve_data = array(
-        'remain_id' => $remain_id,
-        'user_email' => $email
+        'email' => $email,
+        'remaining_id' => $remain_id
     );
-    $send_url = 'http://sample.homestead.test/receive.php';
-    // receive.phpにJSON形式でデータを投げる
-    $json = json_encode($event_data, JSON_PRETTY_PRINT);
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_URL, '\register_reserve');
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
-    $result = curl_exec($ch);
-    $result = json_decode($result, true);
-    if($result["id"] == 200) :?>
+    $json = json_encode($reserve_data, JSON_PRETTY_PRINT);
+    $send_url = 'http://localhost:8090/register_reserve';
+        // receive.phpにJSON形式でデータを投げる
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL, $send_url);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        $result = curl_exec($ch);
+        $events = json_decode($result, true);
+        $httpcode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+    if($httpcode == 200) :?>
         予約しました<br>
         <a href="reserve_home.php" class="btn">戻る</a>
-    <?php else :?>
+    <?php else :
+        $message = $events["message"];
+        echo $message;?>
         失敗しました。やり直してください。<br>
         <a href="reserve_home.php" class="btn">戻る</a>
     <?php endif; ?>
