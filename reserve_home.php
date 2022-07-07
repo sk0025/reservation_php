@@ -14,7 +14,8 @@
     if(!isset($_SESSION["email"])): ?>
     ログインしてください<br>
     <a href="reserve_login.php" class="btn">戻る</a>
-    <?php else : 
+    <?php else :
+     
         $email = $_SESSION["email"];
         $login_data = array(
             'email' => $email
@@ -45,17 +46,18 @@
         //     )
         //     );
         $count = count($events);
-   
+        echo "<h1>Welcome,".$email."</h1><br>";
         for($i = 0 ; $i < $count ; $i ++){
+            
             echo "<div class='card w-50 mb-3' style='margin: auto;'>";
             echo "<div class='card-body'>";
             echo "<h2 class='card-title'>".$events[$i]["event_name"]."</h2>";
-            echo "<form  action='reserve_detail.php' method='get'><input type='hidden' name='event_id' value=".$events[$i]["event_id"]."><div class='btn btn-secondary btn-sm'><input type='submit' value='Detail'></div></form>";
+            echo "<form  action='reserve_detail.php' method='get'><input type='hidden' name='event_id' value=".$events[$i]["event_id"]."><input type='submit' value='Detail'></form>";
             echo "</div>";
             echo "</div>";
         }
     ?>
-    <a href="reserve_mypage.php" class="btn">マイページへ</a>
+    <a href="reserve_mypage.php" class="btn btn-border">マイページへ</a>
     <?php endif; ?>
 </body>
 

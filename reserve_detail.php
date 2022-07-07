@@ -63,7 +63,7 @@
         echo "<div class='card-body'>";
         echo "<h2 class='card-title'>".$days[$i]["day"]."</h2>";
         echo "<h3 class='card-text mb-2'>残席数：".$days[$i]["remain_num_of_people"]."</h3>";
-        echo "<form  action='reserve_make_check.php' method='post'><input type='hidden' name='remain_id' value=".$days[$i]["remain_id"]."><div class='btn btn-secondary btn-sm'><input type='submit' value='予約'></div></form>";
+        echo "<form  action='reserve_make_check.php' method='post'><input type='hidden' name='remain_id' value=".$days[$i]["remain_id"]."><input type='submit' value='予約'></form>";
         echo "</div>";
         echo "</div>";
     }
