@@ -50,7 +50,7 @@
             echo "<div class='card w-50 mb-3' style='margin: auto;'>";
             echo "<div class='card-body'>";
             echo "<h2 class='card-title'>".$events[$i]["event_name"]."</h2>";
-            echo "<form  action='reserve_detail.php' method='get'><input type='hidden' name='event_id' value=".$events[$i]["id"]."><div class='btn btn-secondary btn-sm'><input type='submit' value='Detail'></div></form>";
+            echo "<form  action='reserve_detail.php' method='get'><input type='hidden' name='event_id' value=".$events[$i]["event_id"]."><div class='btn btn-secondary btn-sm'><input type='submit' value='Detail'></div></form>";
             echo "</div>";
             echo "</div>";
         }
