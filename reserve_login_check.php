@@ -41,11 +41,11 @@ session_start();
         $_SESSION["email"] = $email;
     }
     if(!isset($_SESSION["email"])): ?>
-    ログインに失敗しました<br>
-    <a href="reserve_login.php" class="btn">戻る</a>
+    <h2>ログインに失敗しました</h2><br>
+    <a href="reserve_login.php" class="btn btn-border">戻る</a>
 <?php else: ?>
-    ログインに成功しました<br>
-    <a href="reserve_home.php" class="btn">ホームへ</a>
+    <h2>ログインに成功しました</h2><br>
+    <a href="reserve_home.php" class="btn btn-border">ホームへ</a>
 <?php endif; ?>
 </body>
 </html>

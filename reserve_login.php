@@ -7,9 +7,10 @@
     <link rel="stylesheet" type="text/css" href="static/css/home.css">
 </head>
 <body>
-    <form action="reserve_login_check.php" method="post">
-        email<input type="text" name="email"></br>
-        password<input type="password" name="pass"></br>
+    <h1>Reservation</h1>
+    <form action="reserve_login_check.php" method="post" class="login_form">
+        <h2>Email</h2><input type="text" name="email"></br>
+        <h2>Password</h2><input type="password" name="pass"></br><br>
         <input type="submit" value="login">
     </form>
 </body>

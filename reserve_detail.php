@@ -15,6 +15,7 @@
     ログインしてください<br>
     <a href="reserve_login.php" class="btn">戻る</a>
 <?php else : 
+    $email = $_SESSION["email"];
     if(!empty($_GET["event_id"])){
         // 投稿IDのGETパラメータを取得
         $event_id = $_GET['event_id'];
@@ -57,6 +58,10 @@
     #        "event_id" => $event_id
     #    )
     #    );
+    echo "<h1>Reservation</h1>";
+        echo "<div class='header-container'>";
+        echo "<h2>Welcome,".$email."</h2>";
+        echo '<a href="reserve_mypage.php" class="btn btn-border"><div class="mypage">My Page</div></a></div>';
     $count = count($days);
     for($i = 0 ; $i < $count ; $i ++){
         echo "<div class='card w-50 mb-3' style='margin: auto;'>";

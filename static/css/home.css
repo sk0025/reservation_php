@@ -1,19 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
 body{
     background-image: url(back.jpeg);
     margin: 10px;
     padding: 0;
     text-align: center;
+    font-family: 'Caveat', cursive;
+}
+.header-container{
+    font-family: 'Caveat', cursive;
+    display: flex;
+    justify-content: center;
+    padding: 10px; 
 }
 h1 {
     color:navy;
     border-bottom: 3px dashed navy;
-    width: 60%;
+    width: 50%;
     margin: auto;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   }
+h2{
+    padding: 10px; 
+}
 .card-body{
     display: flex;
     justify-content: space-between;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+[type="text"]{
+    width: 100%;
+}
+[type="password"]{
+    width: 100%;
 }
 [type="submit"] {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -33,21 +51,24 @@ h1 {
   [type="submit"]:hover { background: mediumblue; }
 
   a.btn-border {
+
+    width: 10%;
+    height: auto;
     border: 2px solid #000;
     border-radius: 0;
     background: #fff;
-  
+    font-size:  1.5rem;
     -webkit-transform-style: preserve-3d;
-  
     transform-style: preserve-3d;
   }
-  
+
   a.btn-border:before {
+      
     position: absolute;
     top: 0;
     left: 0;
   
-    width: 15px;
+    width: 12px;
     height: 100%;
   
     content: '';
@@ -57,19 +78,23 @@ h1 {
     transform: translateX(0) translateY(0);
   
     border-radius: 0 50% 50% 0;
-    background: blue;
+    background: mediumblue;
   }
   
   a.btn-border:hover:before {
-    
-    width: 30px;
-    height: 30px;
-  
-    content: ">";
-    -webkit-transform: translateX(460%) translateY(.5rem);
-    transform: translateX(460%) translateY(.5rem);
+    font-family: 'Caveat', cursive;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    content: "→";
+    -webkit-transform: translateX(230%) translateY(0);
+    transform: translateX(230%) translateY(0);
   
     color: #fff;
     border-radius: 50%;
   }
-  
+  .login_form{
+      text-align: center;
+      width : 60%;
+      margin: auto;
+  }

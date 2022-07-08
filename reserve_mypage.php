@@ -36,7 +36,10 @@
         $httpcode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         $reservations = $result['reservation'];
         $count = count($reservations);
-   
+        echo "<h1>Reservation</h1>";
+        echo "<div class='header-container'>";
+        echo "<h2>Welcome,".$email."</h2>";
+        echo '<a href="reserve_home.php" class="btn btn-border"><div class="mypage">back to Home</div></a></div>';
         for($i = 0 ; $i < $count ; $i ++){
             echo "<div class='card w-50 mb-3' style='margin: auto;'>";
             echo "<div class='card-body'>";
@@ -47,7 +50,6 @@
             echo "</div>";
         }
     ?>
-    <a href="reserve_home.php" class="btn">ホームへ</a>
     <?php endif; ?>
 </body>
 

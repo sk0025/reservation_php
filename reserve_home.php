@@ -8,6 +8,7 @@
     <title>予約</title>
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
 </head>
 <body>
     <?php
@@ -46,7 +47,12 @@
         //     )
         //     );
         $count = count($events);
-        echo "<h1>Welcome,".$email."</h1><br>";
+       
+        echo "<h1>Reservation</h1>";
+        echo "<div class='header-container'>";
+        echo "<h2>Welcome,".$email."</h2>";
+        echo '<a href="reserve_mypage.php" class="btn btn-border"><div class="mypage">My Page</div></a></div>';
+        
         for($i = 0 ; $i < $count ; $i ++){
             
             echo "<div class='card w-50 mb-3' style='margin: auto;'>";
@@ -57,7 +63,6 @@
             echo "</div>";
         }
     ?>
-    <a href="reserve_mypage.php" class="btn btn-border">マイページへ</a>
     <?php endif; ?>
 </body>
 

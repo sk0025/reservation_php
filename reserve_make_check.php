@@ -40,13 +40,13 @@
         $events = json_decode($result, true);
         $httpcode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
     if($httpcode == 200) :?>
-        予約しました<br>
-        <a href="reserve_home.php" class="btn">戻る</a>
+        <h2>予約しました</h2><br>
+        <a href="reserve_home.php" class="btn btn-border">戻る</a>
     <?php else :
         $message = $events["message"];
         echo $message;?>
-        失敗しました。やり直してください。<br>
-        <a href="reserve_home.php" class="btn">戻る</a>
+        <h2>失敗しました。やり直してください。</h2><br>
+        <a href="reserve_home.php" class="btn btn-border">戻る</a>
     <?php endif; ?>
 <?php endif; ?>
 </body>
