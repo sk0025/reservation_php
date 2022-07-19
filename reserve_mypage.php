@@ -45,7 +45,7 @@
             echo "<div class='card-body'>";
             echo "<h2 class='card-title'>".$reservations[$i]["event_name"]."</h2>";
             echo "<h3 class='card-text mb-2'>日にち：".$reservations[$i]["day"]."</h3>";
-            echo "<form  action='reserve_delete.php' method='get'><input type='hidden' name='event_id' value=".$reservations[$i]["id"]."><input type='submit' value='Delete'></form>";
+            echo "<form  action='reserve_delete.php' method='post'><input type='hidden' name='reserve_id' value=".$reservations[$i]["id"]."><input type='submit' value='Delete'></form>";
             echo "</div>";
             echo "</div>";
         }
