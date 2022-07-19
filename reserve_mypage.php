@@ -36,7 +36,7 @@
         $httpcode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         $reservations = $result['reservation'];
         $count = count($reservations);
-        echo "<h1>Reservation</h1>";
+        echo "<h1>My Page</h1>";
         echo "<div class='header-container'>";
         echo "<h2>Welcome,".$email."</h2>";
         echo '<a href="reserve_home.php" class="btn btn-border"><div class="mypage">back to Home</div></a></div>';
