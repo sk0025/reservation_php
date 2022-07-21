@@ -34,20 +34,28 @@
         $result = curl_exec($ch);
         $result = json_decode($result, true);
         $httpcode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
-        $reservations = $result['reservation'];
-        $count = count($reservations);
-        echo "<h1>My Page</h1>";
-        echo "<div class='header-container'>";
-        echo "<h2>Welcome,".$email."</h2>";
-        echo '<a href="reserve_home.php" class="btn btn-border"><div class="mypage">back to Home</div></a></div>';
-        for($i = 0 ; $i < $count ; $i ++){
-            echo "<div class='card w-50 mb-3' style='margin: auto;'>";
-            echo "<div class='card-body'>";
-            echo "<h2 class='card-title'>".$reservations[$i]["event_name"]."</h2>";
-            echo "<h3 class='card-text mb-2'>日にち：".$reservations[$i]["day"]."</h3>";
-            echo "<form  action='reserve_delete.php' method='post'><input type='hidden' name='reserve_id' value=".$reservations[$i]["id"]."><input type='submit' value='Delete'></form>";
-            echo "</div>";
-            echo "</div>";
+        if($httpcode ==200){
+            $reservations = $result['reservation'];
+            $count = count($reservations);
+            echo "<h1>My Page</h1>";
+            echo "<div class='header-container'>";
+            echo "<h2>Welcome,".$email."</h2>";
+            echo '<a href="reserve_home.php" class="btn btn-border"><div class="mypage">back to Home</div></a></div>';
+            for($i = 0 ; $i < $count ; $i ++){
+                echo "<div class='card w-50 mb-3' style='margin: auto;'>";
+                echo "<div class='card-body'>";
+                echo "<h2 class='card-title'>".$reservations[$i]["event_name"]."</h2>";
+                echo "<h3 class='card-text mb-2'>日にち：".$reservations[$i]["day"]."</h3>";
+                echo "<form  action='reserve_delete.php' method='post'><input type='hidden' name='reserve_id' value=".$reservations[$i]["id"]."><input type='submit' value='Delete'></form>";
+                echo "</div>";
+                echo "</div>";
+            }
+        } else {
+            echo "<h1>My Page</h1>";
+            echo "<div class='header-container'>";
+            echo "<h2>Welcome,".$email."</h2>";
+            echo '<a href="reserve_home.php" class="btn btn-border"><div class="mypage">back to Home</div></a></div>';
+            echo "<h2>まだ予約情報がありません</h2>";
         }
     ?>
     <?php endif; ?>
