@@ -34,33 +34,32 @@
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         $result = curl_exec($ch);
-        $events = json_decode($result, true);
-        $events = $events['events'];
-        // $events = Array(
-        //     "0" => Array(
-        //         "id" => 0,
-        //         "event_name" => "ライブ"
-        //     ),
-        //     "1" => Array(
-        //         "id" => 1,
-        //         "event_name" => "なんか"
-        //     )
-        //     );
-        $count = count($events);
+        $httpcode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+        if($httpcode ==200){
+            $events = json_decode($result, true);
+            $events = $events['events'];
+            $count = count($events);
        
-        echo "<h1>Reservation</h1>";
-        echo "<div class='header-container'>";
-        echo "<h2>Welcome,".$email."</h2>";
-        echo '<a href="reserve_mypage.php" class="btn btn-border"><div class="mypage">My Page</div></a></div>';
-        
-        for($i = 0 ; $i < $count ; $i ++){
+            echo "<h1>Reservation</h1>";
+            echo "<div class='header-container'>";
+            echo "<h2>Welcome,".$email."</h2>";
+            echo '<a href="reserve_mypage.php" class="btn btn-border"><div class="mypage">My Page</div></a></div>';
             
-            echo "<div class='card w-50 mb-3' style='margin: auto;'>";
-            echo "<div class='card-body'>";
-            echo "<h2 class='card-title'>".$events[$i]["event_name"]."</h2>";
-            echo "<form  action='reserve_detail.php' method='get'><input type='hidden' name='event_id' value=".$events[$i]["event_id"]."><input type='submit' value='Detail'></form>";
-            echo "</div>";
-            echo "</div>";
+            for($i = 0 ; $i < $count ; $i ++){
+                
+                echo "<div class='card w-50 mb-3' style='margin: auto;'>";
+                echo "<div class='card-body'>";
+                echo "<h2 class='card-title'>".$events[$i]["event_name"]."</h2>";
+                echo "<form  action='reserve_detail.php' method='get'><input type='hidden' name='event_id' value=".$events[$i]["event_id"]."><input type='submit' value='Detail'></form>";
+                echo "</div>";
+                echo "</div>";
+            }
+        } else {
+            echo "<h1>Reservation</h1>";
+            echo "<div class='header-container'>";
+            echo "<h2>Welcome,".$email."</h2>";
+            echo '<a href="reserve_mypage.php" class="btn btn-border"><div class="mypage">My Page</div></a></div>';
+            echo "<h2>まだイベントがありません</h2>";
         }
     ?>
     <?php endif; ?>
